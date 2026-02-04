@@ -248,7 +248,7 @@ Videos.get("/getlikevideos/:email", async (req, res) => {
     if (LikedData.length > 0) {
       res.json(LikedData);
     } else {
-      res.json("NO DATA");
+      res.json([]);
     }
   } catch (error) {
     res.json(error.message);

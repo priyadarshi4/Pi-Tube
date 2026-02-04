@@ -98,7 +98,7 @@ function Library() {
       try {
         if (user?.email) {
           const response = await fetch(
-            `${backendURL}/video/getwatchlater/${user?.email}`
+            `${backendURL}/videos/getwatchlater/${user?.email}`
           );
           const savedData = await response.json();
           setWatchLater(savedData);
@@ -115,7 +115,7 @@ function Library() {
     const getLikeVideos = async () => {
       try {
         const response = await fetch(
-          `${backendURL}/video/getlikevideos/${user?.email}`
+          `${backendURL}/videos/getlikevideos/${user?.email}`
         );
         const result = await response.json();
         setLikedVideos(result);

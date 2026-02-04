@@ -25,33 +25,45 @@ function LikeVideos() {
   const User = useSelector((state) => state.user.user);
   const { user } = User;
 
-  useEffect(() => {
-    setTimeout(() => {
-      setLoading(false);
-    }, 2500);
-  }, []);
+  
 
   useEffect(() => {
     localStorage.setItem("menuClicked", JSON.stringify(menuClicked));
   }, [menuClicked]);
 
-  useEffect(() => {
-    const getLikeVideos = async () => {
-      try {
-        if (user?.email) {
-          const response = await fetch(
-            `${backendURL}/video/getlikevideos/${user?.email}`
-          );
-          const result = await response.json();
-          setLikedVideos(result);
-        }
-      } catch (error) {
-        // console.log(error.message);
-      }
-    };
-    getLikeVideos();
-  }, [user?.email]);
+ useEffect(() => {
+  const getLikeVideos = async () => {
+    try {
+      if (user?.email) {
+        setLoading(true);
+        const response = await fetch(
+          `${backendURL}/videos/getlikevideos/${encodeURIComponent(user.email)}`
+        );
+        const result = await response.json();
 
+const normalized = result.map(v => ({
+  likedVideoID: v.likedVideoID || v.videoId,
+  thumbnailURL: v.thumbnailURL || v.thumbnail,
+  Title: v.Title || v.title,
+  videoLength: v.videoLength || v.duration,
+  uploader: v.uploader || v.channelName,
+}));
+
+setLikedVideos(normalized);
+
+      }
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  getLikeVideos();
+}, [user?.email]);
+useEffect(() => {
+  console.log("FINAL liked videos:", videolike);
+}, [videolike]);
   useEffect(() => {
     const handleMenuButtonClick = () => {
       setMenuClicked((prevMenuClicked) => !prevMenuClicked);
@@ -96,7 +108,7 @@ function LikeVideos() {
 
   const updateViews = async (id) => {
     try {
-      const response = await fetch(`${backendURL}/video/updateview/${id}`, {
+      const response = await fetch(`${backendURL}/videos/updateview/${id}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -108,20 +120,21 @@ function LikeVideos() {
     }
   };
 
-  if (videolike === "NO DATA") {
-    return (
-      <>
-        <Navbar />
-        <LeftPanel />
-        <div className="searched-content">
-          <img src={nothing} alt="no results" className="nothing-found" />
-          <p className={theme ? "no-results" : "no-results text-light-mode"}>
-            No videos found!
-          </p>
-        </div>
-      </>
-    );
-  }
+  if (!loading && videolike.length === 0) {
+  return (
+    <>
+      <Navbar />
+      <LeftPanel />
+      <div className="searched-content">
+        <img src={nothing} alt="no results" className="nothing-found" />
+        <p className={theme ? "no-results" : "no-results text-light-mode"}>
+          No liked videos yet
+        </p>
+      </div>
+    </>
+  );
+}
+
 
   return (
     <>
@@ -205,7 +218,7 @@ function LikeVideos() {
                 <div className="last-like-section">
                   <p className="like-head">Liked videos</p>
                   <div className="last-like2">
-                    <p className="like-username">{name}</p>
+                    <p className="like-username">{user?.name}</p>
                     <p className="like-total-videos">
                       {videolike.length} videos
                     </p>
@@ -249,12 +262,7 @@ function LikeVideos() {
                               : "liked-all-videos liked-all-videos-light text-light-mode"
                           }
                           key={index}
-                          style={{
-                            display:
-                              element.videoprivacy === "Public"
-                                ? "flex"
-                                : "none",
-                          }}
+                          style={{ display: "flex" }}
                         >
                           <div className="liked-videos-all-data">
                             <Skeleton
@@ -311,10 +319,7 @@ function LikeVideos() {
                             : "liked-all-videos liked-all-videos-light text-light-mode"
                         }
                         key={index}
-                        style={{
-                          display:
-                            element.videoprivacy === "Public" ? "flex" : "none",
-                        }}
+                       style={{ display: "flex" }}
                       >
                         <p style={{ color: "#aaa" }}>{index + 1}</p>
                         <div
@@ -456,7 +461,7 @@ function LikeVideos() {
                   <div className="last-like-section2">
                     <p className="like-head">Liked videos</p>
                     <div className="last-like2">
-                      <p className="like-username">{name}</p>
+                      <p className="like-username">{user?.name}</p>
                       <p className="like-total-videos">
                         {videolike.length} videos
                       </p>
@@ -501,12 +506,7 @@ function LikeVideos() {
                               : "liked-all-videos liked-all-videos-light text-light-mode"
                           }
                           key={index}
-                          style={{
-                            display:
-                              element.videoprivacy === "Public"
-                                ? "flex"
-                                : "none",
-                          }}
+                          style={{ display: "flex" }}
                         >
                           <div className="liked-videos-all-data">
                             <Skeleton
@@ -563,10 +563,7 @@ function LikeVideos() {
                             : "liked-all-videos liked-all-videos-light text-light-mode"
                         }
                         key={index}
-                        style={{
-                          display:
-                            element.videoprivacy === "Public" ? "flex" : "none",
-                        }}
+                        style={{ display: "flex" }}
                       >
                         <p style={{ color: "#aaa" }}>{index + 1}</p>
                         <div
