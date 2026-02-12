@@ -8,10 +8,12 @@ const router = require("./Router/router");
 const app = express();
 const port = 3000;
 
-// ✅ CORS (frontend = Vite)
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: [
+      "http://localhost:5173",
+      "https://pi-tube-nine.vercel.app/"   // change after frontend deploy
+    ],
     credentials: true,
   })
 );
