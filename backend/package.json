@@ -1,4 +1,18 @@
 {
+  "name": "pi-tube-backend",
+  "version": "1.0.0",
+  "description": "MERN YouTube Clone Backend",
+  "main": "index.js",
+
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+
+  "engines": {
+    "node": ">=18"
+  },
+
   "dependencies": {
     "bcrypt": "^5.1.0",
     "body-parser": "^1.20.2",
@@ -11,8 +25,10 @@
     "jsonwebtoken": "^9.0.0",
     "mongoose": "^7.2.4",
     "nodemailer": "^6.9.4",
-    "nodemon": "^3.0.1",
-    "react-top-loading-bar": "^2.3.1",
     "validator": "^13.9.0"
+  },
+
+  "devDependencies": {
+    "nodemon": "^3.0.1"
   }
 }

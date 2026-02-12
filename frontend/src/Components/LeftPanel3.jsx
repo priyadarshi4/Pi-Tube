@@ -86,7 +86,7 @@ function LeftPanel2() {
     const GetVideoData = async () => {
       try {
         if (id) {
-          const response = await fetch(`${backendURL}/video/getvideodata/${id}`);
+          const response = await fetch(`${backendURL}/videos/getvideodata/${id}`);
           const data = await response.json();
           setVideoData(data);
         }
