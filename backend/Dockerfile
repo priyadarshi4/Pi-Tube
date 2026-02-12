@@ -1,16 +1,20 @@
-FROM node
+# Use stable Node LTS (VERY IMPORTANT)
+FROM node:18-alpine
 
-WORKDIR /app/backend
+# Create app directory
+WORKDIR /app
 
-COPY . /app/backend/
+# Copy only package files first (faster builds)
+COPY package*.json ./
 
-RUN npm install
+# Install production dependencies only
+RUN npm install --omit=dev
 
-ENV DB_user=value
-ENV DB_password=value
-ENV DB_name=value
-ENV SECRET_KEY=value
-ENV EMAIL=value
-ENV PASSWORD=value
+# Copy remaining project files
+COPY . .
 
-CMD ["node", "server.js"]
+# App port
+EXPOSE 5000
+
+# Start server
+CMD ["node", "index.js"]
