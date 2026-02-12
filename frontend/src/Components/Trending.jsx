@@ -13,7 +13,7 @@ import { useSelector } from "react-redux";
 
 function Trending() {
  // const backendURL = "https://youtube-clone-mern-backend.vercel.app";
-  const backendURL = "http://localhost:3000/api";
+  const backendURL = import.meta.env.VITE_API_URL;
   const [trendingVideos, setTrendingVideos] = useState([]);
   const [menuClicked, setMenuClicked] = useState(() => {
     const menu = localStorage.getItem("menuClicked");

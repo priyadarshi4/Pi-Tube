@@ -15,7 +15,7 @@ import { useSelector } from "react-redux";
 
 function AccountPop() {
   // Updated backendURL to remove /api prefix for proper backend connection
-  const backendURL = "http://localhost:3000/api";
+  const backendURL = import.meta.env.VITE_API_URL;
   const [profile, setProfile] = useState("");
   const [theme, setTheme] = useState(() => {
     const Dark = localStorage.getItem("Dark");

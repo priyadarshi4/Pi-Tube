@@ -14,7 +14,7 @@ import YouTubeIcon from "@mui/icons-material/YouTube";
 import { useSelector } from "react-redux";
 function AccountPop() {
   //const backendURL = "https://youtube-clone-mern-backend.vercel.app"
-  const backendURL = "http://localhost:3000/api";
+  const backendURL = import.meta.env.VITE_API_URL;
   const [profile, setProfile] = useState("");
   const [theme, setTheme] = useState(() => {
     const Dark = localStorage.getItem("Dark");

@@ -21,7 +21,8 @@ function generateRandomColors(count) {
 
 function ChannelPlaylists(prop) {
   //const backendURL = "https://youtube-clone-mern-backend.vercel.app"
-  const backendURL = "http://localhost:3000/api"
+    const backendURL = import.meta.env.VITE_API_URL;
+
   const [PlaylistData, setPlaylistData] = useState([]);
   const [playlistColors, setPlaylistColors] = useState([]);
   const [loading, setLoading] = useState(true);

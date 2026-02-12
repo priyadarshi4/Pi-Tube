@@ -17,7 +17,7 @@ import { useSelector } from "react-redux";
 
 function Comments() {
   //const backendURL = "https://youtube-clone-mern-backend.vercel.app"
-  const backendURL = "http://localhost:3000/api";
+  const backendURL = import.meta.env.VITE_API_URL;
   const [AllComments, setAllComments] = useState([]);
   const [Profile, setProfile] = useState();
   const [filterComment, setFilterComment] = useState("");

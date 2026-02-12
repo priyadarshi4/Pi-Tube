@@ -21,7 +21,7 @@ import { GrUndo } from "react-icons/gr";
 
 function VideoDetails() {
   //const backendURL = "https://youtube-clone-mern-backend.vercel.app"
-  const backendURL = "http://localhost:3000/api";
+  const backendURL = import.meta.env.VITE_API_URL;
   const { id } = useParams();
   const [videodata, setVideoData] = useState();
   const [previewTitle, setPreviewTitle] = useState("");
