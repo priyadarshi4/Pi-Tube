@@ -22,7 +22,7 @@ import { AiOutlineVideoCameraAdd } from "react-icons/ai";
 import { useSelector } from "react-redux";
 function Navbar() {
   //const backendURL = "https://youtube-clone-mern-backend.vercel.app"
-  const backendURL = import.meta.env.VITE_API_URL;
+  const backendURL = "https://pi-tube.onrender.com/api"
   const { data } = useParams();
   const [data2, setData] = useState(data);
   const [isbtnClicked, setisbtnClicked] = useState(false);

@@ -5,7 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 function Reset() {
   //const backendURL = "https://youtube-clone-mern-backend.vercel.app"
-  const backendURL = import.meta.env.VITE_API_URL;
+  const backendURL = "https://pi-tube.onrender.com/api"
 
   const [email, setEmail] = useState("");
   const [BtnLoading, setBtnLoading] = useState(false);

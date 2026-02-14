@@ -33,7 +33,7 @@ import LanguageIcon from "@mui/icons-material/Language";
 
 function Studio() {
   //const backendURL = "https://youtube-clone-mern-backend.vercel.app"
-  const backendURL = import.meta.env.VITE_API_URL;
+  const backendURL = "https://pi-tube.onrender.com/api"
   const [isChannel, setisChannel] = useState(null);
   const [selectedImage, setSelectedImage] = useState(null);
   const [selectedThumbnail, setSelectedThumbnail] = useState(null);

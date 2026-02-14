@@ -9,8 +9,8 @@ import "react-toastify/dist/ReactToastify.css";
 import { useSelector } from "react-redux";
 
 function Branding() {
-  //const backendURL = "https://youtube-clone-mern-backend.vercel.app"
-  const backendURL = import.meta.env.VITE_API_URL;
+    const backendURL = "https://pi-tube.onrender.com/api"
+
   const [selectedProfile, setSelectedProfile] = useState(null);
   const [previewProfile, setPreviewProfile] = useState(defaultimg);
   const [selectedBanner, setSelectedBanner] = useState(null);

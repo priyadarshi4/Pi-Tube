@@ -7,8 +7,8 @@ import Basic from "./Basic";
 import { useSelector } from "react-redux";
 
 function Customization() {
-  //const backendURL = "https://youtube-clone-mern-backend.vercel.app"
-  const backendURL = import.meta.env.VITE_API_URL;
+   const backendURL = "https://pi-tube.onrender.com/api"
+
   const [currentTab, setCurrentTab] = useState("branding");
   const [channelID, setChannelID] = useState();
   const [menu, setmenu] = useState(() => {

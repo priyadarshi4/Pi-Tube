@@ -22,8 +22,8 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useSelector } from "react-redux";
 function OtherChannel() {
-  //const backendURL = "https://youtube-clone-mern-backend.vercel.app"
-  const backendURL = import.meta.env.VITE_API_URL;
+   const backendURL = "https://pi-tube.onrender.com/api"
+
   const { id } = useParams();
   const [Email, setEmail] = useState();
   const [channelName, setChannelname] = useState();

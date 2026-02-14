@@ -15,7 +15,8 @@ import { useSelector } from "react-redux";
 
 function AccountPop() {
   // Updated backendURL to remove /api prefix for proper backend connection
-  const backendURL = import.meta.env.VITE_API_URL;
+    const backendURL = "https://pi-tube.onrender.com/api"
+
   const [profile, setProfile] = useState("");
   const [theme, setTheme] = useState(() => {
     const Dark = localStorage.getItem("Dark");
