@@ -13,7 +13,7 @@ app.use(
   cors({
     origin: [
       "http://localhost:5173",
-      "https://pi-tube-nine.vercel.app"   // change after frontend deploy
+      "pi-tube-git-main-priyadarshi4s-projects.vercel.app"   // change after frontend deploy
     ],
     credentials: true,
   })
