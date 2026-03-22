@@ -1,7 +1,9 @@
 # MERN YouTube Clone (π-TUBE)
 
 
+
 A feature-rich YouTube clone built using the MERN stack, JWT for authentication, and Firebase Storage for video and file storage. This project aims to replicate the core functionalities of YouTube, allowing users to upload, view, like, comment, and interact with videos.
+
 
 
 
